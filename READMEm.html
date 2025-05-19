@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Webpage</title>
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .element {
+      opacity: 0;
+    }
+
+    .animated {
+      animation: fadeIn 2s ease-in-out;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <button id="animate-btn">Animate</button>
+  <div id="animated-element" class="element">Hello World!</div>
+
+  <script>
+    // Get the button and element
+    const button = document.getElementById('animate-btn');
+    const element = document.getElementById('animated-element');
+
+    // Add an event listener to the button
+    button.addEventListener('click', () => {
+      // Add the animated class to trigger the animation
+      element.classList.add('animated');
+
+      // Store a value in localStorage
+      localStorage.setItem('animationTriggered', 'true');
+    });
+
+    // Check if the animation was previously triggered
+    if (localStorage.getItem('animationTriggered') === 'true') {
+      element.classList.add('animated');
+    }
+  </script>
+</body>
+</html>
